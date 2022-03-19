@@ -7,7 +7,7 @@
         .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
         .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
     </style>
-   <h1> list des srudent </h1>
+   <h1 class="titre"> list des etudiants </h1>
 
     <table class="table table-striped" >
 
@@ -29,13 +29,22 @@
                 <td> {{ item.NSC  }}</td>
                 <td> {{ item.email }}</td>
                 <td> {{ item.Classrooms }}</td>
-                <td> <a href="" > Update</a></td>
-                <td>  <a href="">Delete</a> </td>
+                <td> <a href="{{ path('student_update', { 'NSC' : item.NSC }) }}" > Update</a></td>
+                <td>  <a href="{{ path('student_delete', { 'NSC' : item.NSC }) }}">Delete</a> </td>
             </tr>
         {% endfor %}
         </tbody>
 
     </table>
  <a href="./addStudent">  Ajouter un etudiant</a>
+ <style>
+    .titre
+    {
+    text-align : center ; 
+   font-family: "Lucida Console", "Courier New", monospace;
+   font-size : 50px ; 
+    }
+   
+  </style>
 
 {% endblock %}

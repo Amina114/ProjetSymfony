@@ -68,4 +68,29 @@ class StudentController extends AbstractController
         return $this->redirect("/getAllStudent");
     }
 
+      /**
+     * @Route("/student/update/{NSC}", name="student_update")
+     */
+    public function Update(Request $req, $NSC, StudentRepository $repository): Response {
+
+        $em = $this->getDoctrine()->getManager();
+        //$repo = $em->getRepository(Classroom::class);
+    
+        $student = $repository->find($NSC);
+
+        $form = $this->createForm(StudentType::class, $student);
+
+        $form->handleRequest($req);
+        $isUpdate = true;
+        if($form->isSubmitted() and $form->isValid()){
+            $em->flush();
+            return $this->redirect("/getAllStudent");
+        }
+
+        return $this->render("student/addStudent.html.twig", array(
+            'formStudent' => $form->createView(),
+            'isUpdate' => $isUpdate
+        ));
+    }
+
 }
