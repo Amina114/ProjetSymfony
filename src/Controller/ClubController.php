@@ -39,7 +39,8 @@ class ClubController extends AbstractController
      * @Route("/addClub", name="add_Club")
     */
     public function addClub(Request $request): Response
-    {   $club = new Club() ;
+    {  
+         $club = new Club() ;
         $form = $this->createForm(ClubType::class , $club) ;
         $form->handleRequest($request) ;
         $em = $this->getDoctrine()->getManager() ;

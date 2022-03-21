@@ -32,6 +32,7 @@ class StudentController extends AbstractController
         $student = new Student() ;
         $form = $this->createForm(StudentType::class , $student) ;
         $form->handleRequest($request) ;
+        $isUpdate = false;
         $em = $this->getDoctrine()->getManager() ;
         if($form->isSubmitted() && $form->isValid())
         {
@@ -40,7 +41,8 @@ class StudentController extends AbstractController
             return $this->redirect("/getAllStudent");
         }
         return $this->render('student/addStudent.html.twig' , [
-                'formStudent' => $form->createView()
+                'formStudent' => $form->createView() , 
+                'isUpdate' => $isUpdate
         ] );
     }
 

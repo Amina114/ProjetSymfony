@@ -2,8 +2,22 @@
 
 {% block title %}Add Student{% endblock %}
 
+    
+{#  {% if isUpdate %}
+     <h1> Modifier un Etudiant</h1>
+ {% endif %}
+
+  {% if isSubmitted %}
+         <h1> Ajouter un Etudiant</h1>
+ {% endif %} #}
+
+
 {% block body %}
-    <h1> Ajouter un Etudiant</h1>
+   {{ form(formStudent) }}
  
-    {{ form(formStudent) }}
-{% endblock %}
+
+ {% endblock %}
+
+
+
+   

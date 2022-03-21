@@ -16,9 +16,7 @@ class Club
      * @ORM\Id
      * @ORM\Column(type="string", length=25)
      */
-    private $Ref;
-
-
+    private $ref;
 
     /**
      * @ORM\Column(type="date")
@@ -43,7 +41,7 @@ class Club
 
     public function getRef(): ?int
     {
-        return $this->Ref;
+        return $this->ref;
     }
     public function getCreationDate(): ?\DateTimeInterface
     {
