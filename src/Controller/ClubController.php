@@ -54,4 +54,43 @@ class ClubController extends AbstractController
                 'formClub' => $form->createView()
         ] );
     }
+
+
+         /**
+     * @Route("/club/update/{Ref}", name="club_update")
+     */
+    public function Update(Request $req, $Ref, ClubRepository $repository): Response {
+
+        $em = $this->getDoctrine()->getManager();
+        //$repo = $em->getRepository(Classroom::class);
+    
+        $club = $repository->find($Ref);
+
+        $form = $this->createForm(ClubType::class, $club);
+
+        $form->handleRequest($req);
+        $isUpdate = true;
+        if($form->isSubmitted() and $form->isValid()){
+            $em->flush();
+            return $this->redirect("/getAllClub");
+        }
+
+        return $this->render("club/create.html.twig", array(
+            'formClub' => $form->createView(),
+            'isUpdate' => $isUpdate
+        ));
+    }
+
+    
+    /**
+     * @Route("/club/delete/{Ref}", name="club_delete")
+     */
+    public function Delete(Request $req, $Ref, ClubRepository  $repository): Response {
+
+        $em = $this->getDoctrine()->getManager();
+        $club = $repository->find($Ref);
+        $em->remove($club);
+        $em->flush();
+        return $this->redirect("/getAllClub");
+    }
 }

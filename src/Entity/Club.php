@@ -62,6 +62,7 @@ class Club
     {
         return $this->students;
     }
+    
 
     public function addStudent(Student $student): self
     {
@@ -78,4 +79,5 @@ class Club
 
         return $this;
     }
+    
 }

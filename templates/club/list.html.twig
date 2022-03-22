@@ -30,8 +30,8 @@
                 <td> {{ item.Ref  }}</td>
                 <td> {{ item.Ref}}</td>
                 <td> {{ item.Ref }}</td>
-                <td> <a href="" > Update</a></td>
-                <td>  <a href="">Delete</a> </td>
+                <td> <a href="{{ path('club_update', { 'Ref' : item.ref }) }}"  > Update</a></td>
+                <td>  <a href="{{ path('club_delete', { 'Ref' : item.ref }) }}"> Delete</a> </td>
             </tr>
         {% endfor %}
         </tbody>

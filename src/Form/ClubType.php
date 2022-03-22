@@ -23,11 +23,11 @@ class ClubType extends AbstractType
             ->add('Creation_date')
             ->add('students', EntityType::class, [
                 'class'=> Student::class,
-                'choice_label' => 'email',
+                'choice_label' => 'NSC',
                 'multiple'=> true,
-                'expanded' => true
+                'expanded' => true,
             ])
-                        ->add('Ajouter', SubmitType::class)
+            ->add('Ajouter', SubmitType::class)
 
         ;
     }
