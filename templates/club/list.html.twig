@@ -16,8 +16,8 @@
 
         <th>
             <tr>
-                <td>Id</td>
-                <td>Email</td>
+                <td>Ref</td>
+                <td>Creation</td>
                 <td>Classroom</td>
                 <td> Action</td>
                 <td> Action</td>
@@ -28,7 +28,7 @@
         {% for item in clubs %}
             <tr>
                 <td> {{ item.Ref  }}</td>
-                <td> {{ item.Ref}}</td>
+                <td> {{ item.creationDate | date('Y-m-d') }} </td>
                 <td> {{ item.Ref }}</td>
                 <td> <a href="{{ path('club_update', { 'Ref' : item.ref }) }}"  > Update</a></td>
                 <td>  <a href="{{ path('club_delete', { 'Ref' : item.ref }) }}"> Delete</a> </td>

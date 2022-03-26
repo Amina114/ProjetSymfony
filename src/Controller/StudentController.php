@@ -53,7 +53,7 @@ class StudentController extends AbstractController
     public function getAllStudent(StudentRepository $repository): Response
     {
       //hethi get el kbira 
-             // $students = $repository->findAll() ;
+              $students = $repository->findAll() ;
 
 
       // hethi fazet el order 
@@ -61,14 +61,14 @@ class StudentController extends AbstractController
            //  $students = $em->getStudentsOrderByEmail() ;
 
 
-      //hethi emial specifi
+      //hethi email specifi
     //   $em = $this->getDoctrine()->getManager()->getRepository(Student::class);
      //  $students = $em->getStudentsByEmailSpecific() ;
 
 
      //hethi email behc ta3tih enti f varriable
      $em = $this->getDoctrine()->getManager()->getRepository(Student::class);
-     $students = $em->getStudentsByEmailSpecific2('chab') ;
+     $students = $em->search('chab') ;
     
         return $this->render('student/list.html.twig' , [
             'students' => $students,
@@ -111,6 +111,24 @@ class StudentController extends AbstractController
             'formStudent' => $form->createView(),
             'isUpdate' => $isUpdate
         ));
+    }
+
+     /**
+     * @Route("/searchstudent", name="search_student")
+     */
+    public function searchByName(Request $request): Response
+    {
+        $em = $this->getDoctrine()->getManager()->getRepository(Student::class);
+        $students = $em->getStudentsOrderByEmail();
+
+        $search = $request->query->get('search');
+        if ($search) {
+            $em = $this->getDoctrine()->getManager()->getRepository(Student::class);
+             $students = $em->search($search) ;
+        }
+        return $this->render('student/list.html.twig', [
+            'students' => $students,
+        ]);
     }
 
 }
