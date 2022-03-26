@@ -53,15 +53,22 @@ class StudentController extends AbstractController
     public function getAllStudent(StudentRepository $repository): Response
     {
       //hethi get el kbira 
-              $students = $repository->findAll() ;
+             // $students = $repository->findAll() ;
 
 
       // hethi fazet el order 
             // $em = $this->getDoctrine()->getManager()->getRepository(Student::class);
-            // $students = $em->getStudentsOrderByEmail() ;
+           //  $students = $em->getStudentsOrderByEmail() ;
 
-      /// $em = $this->getDoctrine()->getManager()->getRepository(Student::class);
-      // $students = $em->getStudentsByEmailSpecific() ;
+
+      //hethi emial specifi
+    //   $em = $this->getDoctrine()->getManager()->getRepository(Student::class);
+     //  $students = $em->getStudentsByEmailSpecific() ;
+
+
+     //hethi email behc ta3tih enti f varriable
+     $em = $this->getDoctrine()->getManager()->getRepository(Student::class);
+     $students = $em->getStudentsByEmailSpecific2('chab') ;
     
         return $this->render('student/list.html.twig' , [
             'students' => $students,
