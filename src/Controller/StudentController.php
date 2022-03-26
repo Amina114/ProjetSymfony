@@ -6,6 +6,7 @@ use App\Entity\Student;
 use App\Form\StudentType;
 use App\Repository\ClassroomRepository;
 use App\Repository\StudentRepository;
+use App\Form\SearchStudentType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -51,7 +52,17 @@ class StudentController extends AbstractController
      */
     public function getAllStudent(StudentRepository $repository): Response
     {
-        $students = $repository->findAll() ;
+      //hethi get el kbira 
+              $students = $repository->findAll() ;
+
+
+      // hethi fazet el order 
+            // $em = $this->getDoctrine()->getManager()->getRepository(Student::class);
+            // $students = $em->getStudentsOrderByEmail() ;
+
+      /// $em = $this->getDoctrine()->getManager()->getRepository(Student::class);
+      // $students = $em->getStudentsByEmailSpecific() ;
+    
         return $this->render('student/list.html.twig' , [
             'students' => $students,
         ]);

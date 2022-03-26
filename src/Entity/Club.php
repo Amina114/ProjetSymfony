@@ -27,7 +27,7 @@ class Club
      * @ORM\ManyToMany(targetEntity=Student::class, inversedBy="clubs")
      * @ORM\JoinTable(
      *     name="student_club",
-     *     joinColumns={@ORM\JoinColumn(onDelete="CASCADE" , referencedColumnName="Ref")},
+     *     joinColumns={@ORM\JoinColumn(onDelete="CASCADE" , referencedColumnName="ref")},
      *     inverseJoinColumns={@ORM\JoinColumn(onDelete="CASCADE",referencedColumnName="nsc")}
      * )
      */
@@ -39,9 +39,15 @@ class Club
     }
 
 
-    public function getRef(): ?int
+    public function getRef(): ?string
     {
         return $this->ref;
+    }
+    public function setRef(string $ref): self
+    {
+        $this->ref = $ref;
+
+        return $this;
     }
     public function getCreationDate(): ?\DateTimeInterface
     {

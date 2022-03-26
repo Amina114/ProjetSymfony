@@ -25,8 +25,9 @@ class ClubType extends AbstractType
                 'class'=> Student::class,
                 'choice_label' => 'NSC',
                 'multiple'=> true,
-                'expanded' => true,
+                'expanded' => false,
             ])
+            
             ->add('Ajouter', SubmitType::class)
 
         ;
