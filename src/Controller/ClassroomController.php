@@ -115,4 +115,17 @@ class ClassroomController extends AbstractController
     }
 
 
+        /**
+     * @Route("/getOne/{id}", name="get_one_class")
+     */
+    public function getOne($id): Response
+    {
+        $repository = $this->getDoctrine()->getRepository(Classroom::class) ;
+        $classroom = $repository->find($id) ;
+        return $this->render('classroom/class.html.twig' , [
+            'classroom' => $classroom,
+        ]);
+    }
+
+
 }

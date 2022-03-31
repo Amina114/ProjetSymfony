@@ -37,6 +37,16 @@ class Student
      */
     private $clubs;
 
+    /**
+     * @ORM\Column(type="datetime", nullable="true")
+     */
+    private $creation_date;
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $enabled;
+
     public function __construct()
     {
         $this->clubs = new ArrayCollection();
@@ -101,4 +111,22 @@ class Student
         return $this->email;
     }
     */
+
+    public function getCreationDate()
+    {
+        return $this->creation_date;
+    }
+
+
+    public function getEnabled(): ?bool
+    {
+        return $this->enabled;
+    }
+
+    public function setEnabled(bool $enabled): self
+    {
+        $this->enabled = $enabled;
+
+        return $this;
+    }
 }

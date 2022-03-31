@@ -40,5 +40,3 @@ class ClubType extends AbstractType
         ]);
     }
 }
-// muliple bcp 
-// expanded 

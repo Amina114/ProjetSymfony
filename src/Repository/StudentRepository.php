@@ -26,10 +26,17 @@ class StudentRepository extends ServiceEntityRepository
     public function getStudentsByEmailSpecific(){
         return $this->createQueryBuilder('s1')->andwhere('s1.email LIKE :amina')->setParameter('amina', '%chab%')->getQuery()->getResult() ; 
     }
+    public function getStudentsEnabled(){
+        return $this->createQueryBuilder('s1')->andwhere('s1.enabled LIKE :amina')->setParameter('amina', '1')->getQuery()->getResult() ;
+    }
     public function search($email_var){
         return $this->createQueryBuilder('s1')->andwhere('s1.email LIKE :amina')->setParameter('amina', '%'.$email_var.'%')->getQuery()->getResult() ; 
     }
-
+/*
+    public function getStudentsBuClass($class){
+        return $this->createQueryBuilder('s')
+    }
+*/
     // /**
     //  * @return Student[] Returns an array of Student objects
     //  */

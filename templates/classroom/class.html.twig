@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}details de classe{% endblock %}
+
+{% block body %}
+   <h1> les details</h1>
+   <p> {{ classroom.id }} </p>
+    <p> {{ classroom.name }} </p>
+    {% if classroom.id == 2 %}
+    <p> comp mta3 les dates  if entry.postDate == entry.lessonDate </p>
+    {% endif %}
+
+{% endblock %}
