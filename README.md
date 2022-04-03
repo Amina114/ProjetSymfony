@@ -1,4 +1,4 @@
-# SymfonyProject https://github.com/Amina114/SymfonyProject.git
+# SymfonyProject
 This project is fullstack symfony4
 A project to manage a list of classroom , to effect a student to this classroom and to affect a student to clubs 
 This project is composed of 3 parts:
